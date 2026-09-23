@@ -6,19 +6,26 @@ import (
 	"os"
 	"strings"
 
+	"github.com/LazarNestorovic/key-value-engine/internal/config"
 	"github.com/LazarNestorovic/key-value-engine/internal/engine"
 )
 
 func main() {
 
 	db := engine.NewDBMap()
+	cfg, err := config.LoadConfig("config.json")
+	if err != nil {
+		fmt.Fprintln(os.Stderr, "error:", err)
+		return
+	}
+	fmt.Printf("%+v\n", cfg)
 	Run(db)
 }
 
 func Run(db engine.DB) {
 	scanner := bufio.NewScanner(os.Stdin)
 	for {
-		fmt.Println("Enter comand: ")
+		fmt.Println("Enter command: ")
 		scanner.Scan()
 		line := scanner.Text()
 		parts := strings.SplitN(line, " ", 2)

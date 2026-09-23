@@ -1,0 +1,30 @@
+{
+  "memtable": {
+    "threshold": 200,
+    "instance_num": 2,
+    "impl_type": "hashmap"
+  },
+  "wal": {
+    "segment_size": 256
+  },
+  "cache": {
+    "capacity": 20,
+    "enabled": true
+  },
+  "lsm": {
+    "max_level_num": 6,
+    "compaction_type": "sizetiered",
+    "level_growth_factor": 8
+  },
+  "rate_limit": {
+    "bucket_capacity": 10,
+    "token_rate": 5
+  },
+  "bloom": {
+    "false_positive_rate": 0.01
+  },
+  "storage": {
+    "wal_path": "data/wal",
+    "data_path": "data/sstable"
+  }
+}
