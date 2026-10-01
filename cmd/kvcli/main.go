@@ -18,6 +18,7 @@ func main() {
 		fmt.Fprintln(os.Stderr, "error:", err)
 		return
 	}
+
 	fmt.Printf("%+v\n", cfg)
 	Run(db)
 }
